@@ -1,3 +1,8 @@
+roger_truck_supervisor_app:
+    resource: "@RogerTruckSupervisorAppBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
