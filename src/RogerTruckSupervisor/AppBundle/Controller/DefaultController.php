@@ -24,6 +24,18 @@ class DefaultController extends Controller
     {
         return array('name' => $name);
     }
+    
+    private function logIntoParseFacebook($whattodo){
+        ParseClient::initialize('oL1kxNThX8882iThZhowKQgGMtcX9u93fMYZzRhc', 'OPMvbyuFsR91hkftjr98w80GRpu1HuY4j9DGI7pC', '2zWN6c32DFiFrY4zch0yhLI7dHXHefluRYf8O1ZV');
+        try{
+            $user = ParseUser::logIn("simon", "simon");
+            return $whattodo($user);
+        }catch(ParseException $error){
+
+        }
+        
+        return new Response("ERROR !! ça marche pas !");
+    }
 
     /**
      * @Route("/jfeejzfjezjfo")
@@ -33,17 +45,10 @@ class DefaultController extends Controller
     public function sendAction()
     {
 
-        $response = new JsonResponse();
-        $array_documents = array();
+        $whatareyougonnadonow = function($user){
 
-        // TODO
-
-
-        ParseClient::initialize('oL1kxNThX8882iThZhowKQgGMtcX9u93fMYZzRhc', 'OPMvbyuFsR91hkftjr98w80GRpu1HuY4j9DGI7pC', '2zWN6c32DFiFrY4zch0yhLI7dHXHefluRYf8O1ZV');
-
-        try {
-            $user = ParseUser::logIn("simon", "simon");
-
+            $response = new JsonResponse();
+            $array_documents = array();
             $query = new ParseQuery("Camion");
 
             $results = $query->find();
@@ -58,24 +63,9 @@ class DefaultController extends Controller
             $response->setContent(json_encode( $array_documents ));
             return $response;
             
-            
-        } catch (ParseException $error) {
-            // The login failed. Check error to see why.
-        }
+        };
+        return $this->logIntoParseFacebook($whatareyougonnadonow);
 
-        $query = new ParseQuery("Camion");
-
-        $results = $query->find();
-        echo "Successfully retrieved " . count($results) . " camion.";
-        
-        // Do something with the returned ParseObject values
-        for ($i = 0; $i < count($results); $i++) {
-            $object = $results[$i];
-            echo $object->getObjectId() . ' - ' . $object->get('playerName');
-        }
-
-        $response->setContent(json_encode( $array_documents ));
-        return $response;
     }
 
 
