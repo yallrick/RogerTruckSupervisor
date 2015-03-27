@@ -92,7 +92,7 @@ class DefaultController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function getTruckInfo()
+    public function getTruckInfo($id)
     {
         $response = new JsonResponse();
         $array_documents = array();
@@ -106,7 +106,7 @@ class DefaultController extends Controller
           // The object was not retrieved successfully.
           // error is a ParseException with an error code and message.
         }
-        $model = $gameScore->get("model")
+        $model = $gameScore->get("model");
         $response->setContent(json_encode( $model ));
       
         return new Response();
