@@ -88,24 +88,27 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/demo")
+     * @Route("/truck/{id}")
      * @Method("GET")
      * @Template()
      */
-    public function demoAction()
+    public function getTruckInfo()
     {
-
         $response = new JsonResponse();
         $array_documents = array();
-
+    
         // TODO
-        
-        $array_documents[] = array("code" => 200, "message" => "touvabien");
-        $array_documents[] = array("code" => 200, "message" => "touvabien");
-        $array_documents[] = array("code" => 200, "message" => "touvabien");
-        $array_documents[] = array("code" => 200, "message" => "touvabien");
-
-        $response->setContent(json_encode( $array_documents ));
-        return $response;
+        $query = new ParseQuery("Camion");
+        try {
+          $gameScore = $query->get($id);
+          // The object was retrieved successfully.
+        } catch (ParseException $ex) {
+          // The object was not retrieved successfully.
+          // error is a ParseException with an error code and message.
+        }
+        $model = $gameScore->get("model")
+        $response->setContent(json_encode( $model ));
+      
+        return new Response();
     }
 }
