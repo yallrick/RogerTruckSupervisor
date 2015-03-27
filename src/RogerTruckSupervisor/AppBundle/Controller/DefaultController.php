@@ -2,6 +2,7 @@
 
 namespace RogerTruckSupervisor\AppBundle\Controller;
 
+use Parse\ParseObject;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -32,6 +33,10 @@ class DefaultController extends Controller
         $array_documents = array();
 
         // TODO
+
+        $testObject = ParseObject::create("TestObject");
+        $testObject->set("foo", "bar");
+        $testObject->save();
 
         $response->setContent(json_encode( $array_documents ));
         return $response;
