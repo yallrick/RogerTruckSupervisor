@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe238b6-83a4-436e-b8d4-94a41d95f232" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/DefaultController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RogerTruckSupervisor.iws" />
@@ -573,7 +572,7 @@
       <option name="number" value="Default" />
       <updated>1426863721257</updated>
       <workItem from="1426863721773" duration="2832000" />
-      <workItem from="1427460141073" duration="6639000" />
+      <workItem from="1427460141073" duration="6708000" />
     </task>
     <task id="LOCAL-00001" summary="installation de parse">
       <created>1427463067408</created>
@@ -587,11 +586,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427465179863</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="WHAT ARE YOU GONNA DO NOW">
+      <created>1427467678814</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1427467678814</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9471000" />
+    <option name="totallyTimeSpent" value="9540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -644,7 +649,8 @@
     </option>
     <MESSAGE value="installation de parse" />
     <MESSAGE value="correction d'un bug sur la config parse" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction d'un bug sur la config parse" />
+    <MESSAGE value="WHAT ARE YOU GONNA DO NOW" />
+    <option name="LAST_COMMIT_MESSAGE" value="WHAT ARE YOU GONNA DO NOW" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
