@@ -572,7 +572,7 @@
       <option name="number" value="Default" />
       <updated>1426863721257</updated>
       <workItem from="1426863721773" duration="2832000" />
-      <workItem from="1427460141073" duration="7964000" />
+      <workItem from="1427460141073" duration="7975000" />
     </task>
     <task id="LOCAL-00001" summary="installation de parse">
       <created>1427463067408</created>
@@ -604,11 +604,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427468942928</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="méthode d'enregistrement de la position des camions vroumvroum">
+      <created>1427468985828</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1427468985828</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10796000" />
+    <option name="totallyTimeSpent" value="10807000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
