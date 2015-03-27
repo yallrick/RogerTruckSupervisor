@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7fe238b6-83a4-436e-b8d4-94a41d95f232" name="Default" comment="WHAT ARE YOU GONNA DO NOW">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/DefaultController.php" />
+    <list default="true" id="7fe238b6-83a4-436e-b8d4-94a41d95f232" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RogerTruckSupervisor.iws" />
@@ -31,7 +30,7 @@
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2758112" vertical-offset="1054" max-vertical-offset="1989">
+            <state vertical-scroll-proportion="0.43187067" vertical-offset="1054" max-vertical-offset="1989">
               <caret line="73" column="20" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
               <folding>
                 <element signature="e#61#83#0#PHP" expanded="true" />
@@ -165,7 +164,7 @@
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="false" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
     <OptionsSetting value="true" id="Undo Check Out" />
@@ -573,7 +572,7 @@
       <option name="number" value="Default" />
       <updated>1426863721257</updated>
       <workItem from="1426863721773" duration="2832000" />
-      <workItem from="1427460141073" duration="7894000" />
+      <workItem from="1427460141073" duration="7964000" />
     </task>
     <task id="LOCAL-00001" summary="installation de parse">
       <created>1427463067408</created>
@@ -599,17 +598,23 @@
       <option name="project" value="LOCAL" />
       <updated>1427467727718</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="méthode d'enregistrement de la position des camions vroumvroum">
+      <created>1427468942928</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1427468942928</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10726000" />
+    <option name="totallyTimeSpent" value="10796000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -657,7 +662,8 @@
     <MESSAGE value="installation de parse" />
     <MESSAGE value="correction d'un bug sur la config parse" />
     <MESSAGE value="WHAT ARE YOU GONNA DO NOW" />
-    <option name="LAST_COMMIT_MESSAGE" value="WHAT ARE YOU GONNA DO NOW" />
+    <MESSAGE value="méthode d'enregistrement de la position des camions vroumvroum" />
+    <option name="LAST_COMMIT_MESSAGE" value="méthode d'enregistrement de la position des camions vroumvroum" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -794,7 +800,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2758112" vertical-offset="1054" max-vertical-offset="1989">
+        <state vertical-scroll-proportion="0.43187067" vertical-offset="1054" max-vertical-offset="1989">
           <caret line="73" column="20" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
           <folding>
             <element signature="e#61#83#0#PHP" expanded="true" />
