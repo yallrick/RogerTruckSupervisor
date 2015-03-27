@@ -88,7 +88,7 @@ class DefaultController extends Controller
     {
         $response = new JsonResponse();
         $array_documents = array();
-
+    
         // TODO
         $query = new ParseQuery("Camion");
         try {
@@ -99,7 +99,8 @@ class DefaultController extends Controller
           // error is a ParseException with an error code and message.
         }
         $model = $gameScore->get("model")
-        $response->setContent(json_encode( "ok" ));
-        return $response;
+        $response->setContent(json_encode( $model ));
+      
+        return new Response();
     }
 }
