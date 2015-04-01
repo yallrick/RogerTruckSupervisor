@@ -10,7 +10,7 @@ imports:
 #        metadata_cache_driver: apc
 #        result_cache_driver: apc
 #        query_cache_driver: apc
-
+#monolog:handlers:nested:path: "%kernel.logs_dir%/%kernel.environment%.log"
 monolog:
     handlers:
         main:
@@ -19,7 +19,7 @@ monolog:
             handler:      nested
         nested:
             type:  stream
-            path:  "php://stderr"#"%kernel.logs_dir%/%kernel.environment%.log"
+            path:  "php://stderr"
             level: debug
         console:
             type:  console
