@@ -4,6 +4,7 @@ namespace RogerTruckSupervisor\AppBundle\Controller;
 
 use Parse\ParseClient;
 use Parse\ParseException;
+use Parse\ParseGeoPoint;
 use Parse\ParseObject;
 use Parse\ParseQuery;
 use Parse\ParseUser;
@@ -12,6 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
@@ -73,14 +75,32 @@ class DefaultController extends Controller
      * @Route(  "/truck/{id_truck}/location")
      * @Method("POST")
      */
-    public function truckUpdateLocationAction($id_truck){
+    public function truckUpdateLocationAction(Request $request, $id_truck){
         
         $foo = function($user, $options){
             $idTruck = $options['id_truck'];
+            $request = $options['request'];
+
+            $json = new JsonResponse();
+
+            $query = new ParseQuery("Camion");
+            try {
+
+                $gameScore = $query->get($idTruck);
+                
+                $gameScore->set("location", new ParseGeoPoint($request->get('lon') + 0, $request->get('lat') + 0));
+                $gameScore->save();
+                
+                $json->setContent(json_encode(array("operation" => true)));
+            } catch (ParseException $ex) {
+                
+                
+                $json->setContent(json_encode(array("operation" => false, "error" => $ex->getMessage())));
+            }
             
-            return new Response($idTruck);
+            return $json;
         };
-        return $this->logIntoParseFacebook($foo, array('id_truck' => $id_truck));
+        return $this->logIntoParseFacebook($foo, array('request' => $request, 'id_truck' => $id_truck));
         
     }
     
