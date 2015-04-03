@@ -94,22 +94,34 @@ class DefaultController extends Controller
      */
     public function truckInfoAction($id_truck)
     {
-        $yolo = function($user, $options){
-            $idTruck = $options['id_truck'];
-
-
-            $response = new JsonResponse();
-            $array_documents = array();
-            $query = new ParseQuery("Camion");
-
-            $result = $query->get($idTruck);
-            echo "Successfully retrieved " . count($result) . " camion.";
-
-            $array_documents[] = $result->get("model");
-            $response->setContent(json_encode( $array_documents ));
-            return $response;
-            
-        };
-        return $this->logIntoParseFacebook($yolo, array('id_truck' => $id_truck));
+        #$yolo = function($user, $options){
+        #    $idTruck = $options['id_truck'];
+#
+#
+#        #    $response = new JsonResponse();
+#        #    $array_documents = array();
+#        #    $query = new ParseQuery("Camion");
+#        #    try{
+#        #        $result = $query->get($idTruck);
+#
+#        #        $array_documents["birthdayYear"] = $result->get("birthdayYear");
+#        #        $array_documents["constructorLabel"] = $result->get("constructorLabel");
+#        #        $array_documents["model"] = $result->get("model");
+#        #        $array_documents["immatriculation"] = $result->get("immatriculation");
+#        #        $array_documents["kmCount"] = $result->get("kmCount");
+#        #        $array_documents["lastRevision"] = $result->get("lastRevision");
+#        #        
+#
+#        #        $response->setContent(json_encode( $array_documents ));
+#        #    }
+#        #    catch(ParseException $ex){
+#        #        $response->setContent(json_encode(array("operation" => false, "error" => $ex->getMessage())));
+#        #    } 
+#        #    
+#        #    
+#        #    return $response;
+#        #    
+#        #};
+        #return $this->logIntoParseFacebook($yolo, array('id_truck' => $id_truck));
     }
 }
