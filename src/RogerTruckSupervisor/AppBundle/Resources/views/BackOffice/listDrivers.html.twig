@@ -15,7 +15,10 @@
             <td>{{ truck.status }}</td>
             <td>
                 {% if truck.status == "NEED_ASSISTANCE" %}
-                    <a href="#911">CALL DA POLICE</a>
+                    <form action="sendTechnician" method="post">
+                        <input type="hidden" name="id_truck" value="{{ truck.id }}" />
+                        <input type="submit" value="Appeler Assistance" />
+                    </form>
                 {% endif %}
             </td>
         </tr>

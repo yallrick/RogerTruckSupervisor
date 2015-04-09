@@ -4,11 +4,15 @@ namespace RogerTruckSupervisor\AppBundle\Controller;
 
 use Parse\ParseClient;
 use Parse\ParseException;
+use Parse\ParseObject;
 use Parse\ParseQuery;
 use Parse\ParseUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class BackOfficeController extends Controller
 {
@@ -43,26 +47,68 @@ class BackOfficeController extends Controller
 
         $trucks = $this->logIntoParseFacebook($foo);
         
-        // trasformation de l'objet en liste
+        // transformation de l'objet en liste
         $array_truck = array();
         foreach($trucks as $truck){
-            $array_truck[] = array("immatriculation" => $truck->get("immatriculation"), "status" => $truck->get("status"));
+            $array_truck[] = array(
+                "id" => $truck->getObjectId(),
+                "immatriculation" => $truck->get("immatriculation"),
+                "status" => $truck->get("status")
+            );
         }
         
         
         return array(
                 "trucks" => $array_truck
-            );    }
+            );    
+    }
 
     /**
      * @Route("/sendTechnician")
+     * @Method("POST")
      * @Template()
      */
-    public function sendTechnicianAction()
+    public function sendTechnicianAction(Request $request)
     {
-        return array(
-                // ...
-            );    }
+        
+        // retrouver le camion
+        $foo = function($user, $options) {
+            $query = new ParseQuery("Camion");
+
+            $idTruck = $options['request']->get('id_truck');
+            
+            try {
+                return $query->get($idTruck);
+            } catch (ParseException $ex) {
+                return null;
+            }
+        };
+        $truck = $this->logIntoParseFacebook($foo, array('request' => $request));
+
+        $truck->set("status", "RUNNING");
+        $truck->save();
+        
+        
+        // sélectionner un technicien disponible
+        if($truck != null){
+            
+            $foo = function($usr, $options){
+                
+                $truck = $options['truck'];
+                
+                $intervention = new ParseObject("Intervention");
+                $intervention->set("coordinate", $truck->get('location'));
+                $intervention->save();
+                
+                return $intervention;
+            };
+            $intervention = $this->logIntoParseFacebook($foo, array('truck' => $truck));
+            
+            return new Response("Les secours ont été appelé (".$intervention->getObjectId().")");
+        }
+
+        return new Response("Un Problème est survennu, impossible d'appeler les secours.");
+    }
 
 
 
