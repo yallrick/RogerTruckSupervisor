@@ -68,6 +68,7 @@ class DefaultController extends Controller
                 $camion_location->set("camionID", $idTruck);
                 $camion_location->set("location", $location);
                 $camion_location->set("lastTick", $time);
+                $camion_location->save();
 
                 // mise à jour de la table
                 $gameScore->set("location", $location);
