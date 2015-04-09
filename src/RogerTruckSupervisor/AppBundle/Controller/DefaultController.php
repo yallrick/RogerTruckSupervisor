@@ -40,36 +40,6 @@ class DefaultController extends Controller
         return new Response("ERROR !! ça marche pas !");
     }
 
-    /**
-     * @Route("/jfeejzfjezjfo")
-     * @Method("GET")
-     * @Template()
-     */
-    public function sendAction()
-    {
-
-        $whatareyougonnadonow = function($user){
-
-            $response = new JsonResponse();
-            $array_documents = array();
-            $query = new ParseQuery("Camion");
-
-            $results = $query->find();
-            echo "Successfully retrieved " . count($results) . " camion.";
-
-            // Do something with the returned ParseObject values
-            for ($i = 0; $i < count($results); $i++) {
-                $object = $results[$i];
-                echo $object->getObjectId() . ' - ' . $object->get('playerName');
-            }
-
-            $response->setContent(json_encode( $array_documents ));
-            return $response;
-            
-        };
-        return $this->logIntoParseFacebook($whatareyougonnadonow);
-
-    }
 
     /**
      * @Route(  "/truck/{id_truck}/location")
@@ -84,11 +54,22 @@ class DefaultController extends Controller
             $json = new JsonResponse();
 
             $query = new ParseQuery("Camion");
+            $camion_location = new ParseObject("Camion_location");
             try {
 
                 $gameScore = $query->get($idTruck);
+
+                $location = new ParseGeoPoint($request->get('lon') + 0, $request->get('lat') + 0);
+                $time = time();
                 
-                $gameScore->set("location", new ParseGeoPoint($request->get('lon') + 0, $request->get('lat') + 0));
+                // mémorisation dans l'historique
+                $camion_location->set("camionID", $idTruck);
+                $camion_location->set("location", $location);
+                $camion_location->set("lastTick", $time);
+
+                // mise à jour de la table
+                $gameScore->set("location", $location);
+                $gameScore->set("lastTick", $time );
                 $gameScore->save();
                 
                 $json->setContent(json_encode(array("operation" => true)));
@@ -101,7 +82,47 @@ class DefaultController extends Controller
             return $json;
         };
         return $this->logIntoParseFacebook($foo, array('request' => $request, 'id_truck' => $id_truck));
+    }
+    
+    
+    
+    
+    
+    
+    
+
+
+
+    /**
+     * @Route("/truck/{id}/help/{foo}")
+     * @Method("POST")
+     */
+    public function needHelpAction(Request $request, $id, $needed){
         
+        $foo = function($user, $options){
+            $idTruck = $options['id_truck'];
+            $needHelp = $options['needed'];
+
+            $json = new JsonResponse();
+
+            $query = new ParseQuery("Camion");
+            try {
+
+                $gameScore = $query->get($idTruck);
+                $gameScore->set('status', $needHelp ? "NEED_ASSISTANCE" : "RUNNING");
+                $gameScore->save();
+
+                $json->setContent(json_encode(array("operation" => true)));
+            } catch (ParseException $ex) {
+
+
+                $json->setContent(json_encode(array("operation" => false, "error" => $ex->getMessage())));
+            }
+            
+            return $json;
+        };
+        
+        return $this->logIntoParseFacebook($foo, array('request' => $request, 'id_truck' => $id, 'needed' => $needed));
     }
     
     
