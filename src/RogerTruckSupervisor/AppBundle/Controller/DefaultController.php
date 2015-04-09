@@ -94,7 +94,7 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/truck/{id}/help/{foo}")
+     * @Route("/truck/{id}/help/{needed}")
      * @Method("POST")
      */
     public function needHelpAction(Request $request, $id, $needed){
