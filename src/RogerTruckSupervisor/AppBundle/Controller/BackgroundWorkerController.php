@@ -19,6 +19,7 @@ class BackgroundWorkerController extends Controller
     {
         $response = new JsonResponse();
         $array_documents = array();
+        $LIMITATIONMAXIMUMDELADUREEDUTEMPSDELARRET = 300;
 
         // TODO
         $query = new ParseQuery("Camion");
@@ -50,7 +51,7 @@ class BackgroundWorkerController extends Controller
                         $sumTick = 0;
                     }
                     
-                    if($sumTick >= LIMITATIONMAXIMUMDELADUREEDUTEMPSDELARRET){
+                    if($sumTick >= $LIMITATIONMAXIMUMDELADUREEDUTEMPSDELARRET){
                         // TODO : envoyer le message de "qu'es ce qui se passe"
 
 
