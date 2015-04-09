@@ -1,9 +1,24 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}RogerTruckSupervisorAppBundle:BackOffice:listDrivers{% endblock %}
+{% block title %}RogerTruckSupervisor - BackOffice{% endblock %}
 
 {% block body %}
-<h1>Welcome to the BackOffice:listDrivers page</h1>
+<h1>Liste des camions</h1>
+<table style="border: 1px solid black;width:75%;" border="1">
+    <tr>
+        <td><b>Immatriculation</b></td>
+        <td><b>Status</b></td>
+    </tr>    
+    {% for truck in trucks %}
+        <tr>
+            <td>{{ truck.immatriculation }}</td>
+            <td>{{ truck.status }}</td>
+            <td>
+                {% if truck.status == "NEED_ASSISTANCE" %}
+                    <a href="#911">CALL DA POLICE</a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
 {% endblock %}
-
-

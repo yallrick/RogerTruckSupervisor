@@ -2,8 +2,10 @@
 
 namespace RogerTruckSupervisor\AppBundle\Controller;
 
+use Parse\ParseClient;
 use Parse\ParseException;
 use Parse\ParseQuery;
+use Parse\ParseUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -41,12 +43,15 @@ class BackOfficeController extends Controller
 
         $trucks = $this->logIntoParseFacebook($foo);
         
-        
-        
+        // trasformation de l'objet en liste
+        $array_truck = array();
+        foreach($trucks as $truck){
+            $array_truck[] = array("immatriculation" => $truck->get("immatriculation"), "status" => $truck->get("status"));
+        }
         
         
         return array(
-                "trucks" => $trucks
+                "trucks" => $array_truck
             );    }
 
     /**

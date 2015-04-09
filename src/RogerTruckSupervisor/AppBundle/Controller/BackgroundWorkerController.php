@@ -2,12 +2,15 @@
 
 namespace RogerTruckSupervisor\AppBundle\Controller;
 
+use Parse\ParseClient;
 use Parse\ParseException;
 use Parse\ParseQuery;
+use Parse\ParseUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class BackgroundWorkerController extends Controller
 {
