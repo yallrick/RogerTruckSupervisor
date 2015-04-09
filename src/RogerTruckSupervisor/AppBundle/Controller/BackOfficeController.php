@@ -27,7 +27,7 @@ class BackOfficeController extends Controller
             );    }
 
     /**
-     * @Route("/listDrivers")
+     * @Route("/listDrivers", name="listDrivers")
      * @Template()
      */
     public function listDriversAction()
@@ -85,7 +85,7 @@ class BackOfficeController extends Controller
         };
         $truck = $this->logIntoParseFacebook($foo, array('request' => $request));
 
-        $truck->set("status", "RUNNING");
+        $truck->set("status", "ASSISTANCE_CALLED");
         $truck->save();
         
         
@@ -103,8 +103,10 @@ class BackOfficeController extends Controller
                 return $intervention;
             };
             $intervention = $this->logIntoParseFacebook($foo, array('truck' => $truck));
-            
-            return new Response("Les secours ont été appelé (".$intervention->getObjectId().")");
+
+
+            return $this->redirect($this->generateUrl('listDrivers'));
+            //return new Response("Les secours ont été appelé (".$intervention->getObjectId().")");
         }
 
         return new Response("Un Problème est survennu, impossible d'appeler les secours.");
