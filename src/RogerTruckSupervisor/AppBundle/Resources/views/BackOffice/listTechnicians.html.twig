@@ -1,7 +1,26 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}RogerTruckSupervisorAppBundle:BackOffice:listTechnicians{% endblock %}
+{% block title %}RogerTruckSupervisor - BackOffice{% endblock %}
 
 {% block body %}
-<h1>Welcome to the BackOffice:listTechnicians page</h1>
+<h1>Liste des techniciens</h1>
+<table style="border: 1px solid black;width:75%;" border="1">
+    <tr>
+        <td><b>Nom</b></td>
+         <td><b>Email</b></td>
+        <td><b>Status</b></td>
+    </tr>    
+    {% for technician in technicians %}
+        <tr>
+            <td>{{ technician.username }}</td>
+            <td>{{ technician.email }}</td>
+            <td>{{ technician.status }}</td>
+            <td>
+                {% if technician.status %}
+                    <p>disponible</p>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
 {% endblock %}

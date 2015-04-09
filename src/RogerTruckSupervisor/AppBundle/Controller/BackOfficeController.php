@@ -18,8 +18,36 @@ class BackOfficeController extends Controller
      */
     public function listTechniciansAction()
     {
+        $foo = function(){
+            $query = new ParseQuery("Technicien");
+            try{
+                return $query->find();
+            } catch(ParseException $ex){
+                return array();
+            }
+        };
+
+        $technicians = $this->logIntoParseFacebook($foo);
+
+
+        $array_technicians = array();
+        foreach($technicians as $technician){
+            $queryUser = new ParseQuery("User");
+            
+            $user = $queryUser->get($technician->get('userId'));
+            $username = $user->get('username');
+            $email = $user->get('email');
+
+            $queryIntervention = new ParseQuery("Intervention");
+            $queryIntervention->equalTo("technicienId", $technician->getOjectId());
+            $intervention = $queryIntervention->find();
+            $available = $intervention->get('dateEndIntervention') ? true : false;
+
+            $array_technicians[] = array("nom" => $username, "email" => $email, "status" => $available);
+        } 
+
         return array(
-                // ...
+                "technicians" => $array_technicians
             );    }
 
     /**
