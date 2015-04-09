@@ -8,6 +8,8 @@ use Parse\ParseGeoPoint;
 use Parse\ParseObject;
 use Parse\ParseQuery;
 use Parse\ParseUser;
+use Parse\ParseInstallation;
+use Parse\ParsePush;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -129,27 +131,61 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/truck/{id}")
+     * @Route("/pushTechnician")
      * @Method("GET")
      * @Template()
      */
-    public function getTruckInfo($id)
+    public function pushTechnicianAction()
     {
-        $response = new JsonResponse();
-        $array_documents = array();
-    
-        // TODO
-        $query = new ParseQuery("Camion");
-        try {
-          $gameScore = $query->get($id);
-          // The object was retrieved successfully.
-        } catch (ParseException $ex) {
-          // The object was not retrieved successfully.
-          // error is a ParseException with an error code and message.
-        }
-        $model = $gameScore->get("model");
-        $response->setContent(json_encode( $model ));
-      
-        return new Response();
+        $foo = function(){
+            $json = new JsonResponse();
+            try{
+                $queryIOS = ParseInstallation::query();
+                $queryIOS->equalTo('deviceType', 'ios');
+                 
+                ParsePush::send(array(
+                  "where" => $queryIOS,
+                  "data" => array(
+                    "alert" => "HELLO IOS"
+                  )
+                ));
+                $json->setContent(json_encode(array("operation" => true)));
+            }
+            catch(ParseException $ex){
+                $json->setContent(json_encode(array("operation" => false, "error" => $ex->getMessage())));
+            }
+            return $json;
+        };
+        return $this->logIntoParseFacebook($foo, null);
     }
-}
+
+        /**
+     * @Route("/pushDriver")
+     * @Method("GET")
+     * @Template()
+     */
+    public function pushDriverAction()
+    {
+        $foo = function(){
+            $json = new JsonResponse();
+            try{
+                // Notification for Android users
+                $queryAndroid = ParseInstallation::query();
+                $queryAndroid->equalTo('deviceType', 'android');
+                 
+                ParsePush::send(array(
+                  "where" => $queryAndroid,
+                  "data" => array(
+                    "alert" => "Your suitcase has been filled with tiny robots!"
+                  )
+                ));
+                $json->setContent(json_encode(array("operation" => true)));
+            }
+            catch(ParseException $ex){
+                $json->setContent(json_encode(array("operation" => false, "error" => $ex->getMessage())));
+            }
+            return $json;
+        };
+        return $this->logIntoParseFacebook($foo, null);
+    }
+}   
