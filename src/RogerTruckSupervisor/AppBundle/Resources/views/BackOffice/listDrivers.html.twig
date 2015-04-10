@@ -3,25 +3,34 @@
 {% block title %}RogerTruckSupervisor - BackOffice{% endblock %}
 
 {% block body %}
-<h1>Liste des camions</h1>
-<table style="border: 1px solid black;width:75%;" border="1">
-    <tr>
-        <td><b>Immatriculation</b></td>
-        <td><b>Status</b></td>
-    </tr>    
-    {% for truck in trucks %}
-        <tr>
-            <td>{{ truck.immatriculation }}</td>
-            <td>{{ truck.status }}</td>
-            <td>
-                {% if truck.status == "NEED_ASSISTANCE" %}
-                    <form action="sendTechnician" method="post">
-                        <input type="hidden" name="id_truck" value="{{ truck.id }}" />
-                        <input type="submit" value="Appeler Assistance" />
-                    </form>
-                {% endif %}
-            </td>
-        </tr>
-    {% endfor %}
-</table>
+    <h1>Liste des camions</h1>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <td><b>Immatriculation</b></td>
+                <td><b>Status</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for truck in trucks %}
+                <tr>
+                    <td>{{ truck.immatriculation }}</td>
+                    <td>{{ truck.status }}</td>
+                    <td>
+                        {% if truck.status == "NEED_ASSISTANCE" %}
+                            <form action="sendTechnician" method="post">
+                                <input type="hidden" name="id_truck" value="{{ truck.id }}" />
+                                <input type="submit" value="Appeler Assistance" class="btn btn-warning" />
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="listTechnicians" class="btn btn-primary">Voir la liste des techniciens</a>
+{% endblock %}
+
+{% block javascripts %}
+    
 {% endblock %}

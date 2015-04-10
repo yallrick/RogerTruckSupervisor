@@ -120,7 +120,7 @@ class BackOfficeController extends Controller
         };
         $truck = $this->logIntoParseFacebook($foo, array('request' => $request));
 
-        $truck->set("status", "ASSISTANCE_CALLED");
+        //$truck->set("status", "ASSISTANCE_CALLED");
         $truck->save();
         
         
@@ -134,9 +134,14 @@ class BackOfficeController extends Controller
 
                 $technicienQuery = new ParseQuery("Technicien");
                 $technicien = $technicienQuery->get("GQFwOCgqSn");
+
+                $fiche = new ParseObject("FicheIntervention");
+                $fiche->set("camionId", $truck);
+                $fiche->save();
                 
                 $intervention = new ParseObject("Intervention");
                 $intervention->set("coordinate", $truck->get('location'));
+                $intervention->set("ficheInterventionId", $fiche);
                 $intervention->set("technicienId", $technicien); // identifiant du technicien
                 $intervention->save();
                 
