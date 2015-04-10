@@ -18,6 +18,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BackOfficeController extends Controller
 {
+    
+    
+    
+    private $user;
+    
     /**
      * @Route("/listTechnicians")
      * @Template()
@@ -137,9 +142,14 @@ class BackOfficeController extends Controller
             $foo = function($usr, $options){
                 
                 $truck = $options['truck'];
+
+
+                $technicienQuery = new ParseQuery("Technicien");
+                $technicien = $technicienQuery->get("GQFwOCgqSn");
                 
                 $intervention = new ParseObject("Intervention");
                 $intervention->set("coordinate", $truck->get('location'));
+                $intervention->set("technicienId", $technicien); // identifiant du technicien
                 $intervention->save();
                 
                 return $intervention;
@@ -174,6 +184,7 @@ class BackOfficeController extends Controller
         ParseClient::initialize('oL1kxNThX8882iThZhowKQgGMtcX9u93fMYZzRhc', 'OPMvbyuFsR91hkftjr98w80GRpu1HuY4j9DGI7pC', '2zWN6c32DFiFrY4zch0yhLI7dHXHefluRYf8O1ZV');
         try{
             $user = ParseUser::logIn("simon", "simon");
+            $this->user = $user;
             return $whattodo($user, $options);
         }catch(ParseException $error){
 
