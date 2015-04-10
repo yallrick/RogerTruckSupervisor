@@ -3,25 +3,34 @@
 {% block title %}RogerTruckSupervisor - BackOffice{% endblock %}
 
 {% block body %}
-<h1>Liste des techniciens</h1>
-<table style="border: 1px solid black;width:75%;" border="1">
-    <tr>
-        <td><b>Nom</b></td>
-         <td><b>Email</b></td>
-        <td><b>Status</b></td>
-    </tr>    
-    {% for technician in technicians %}
+    <h1>Liste des techniciens</h1>
+    <table class="table table-stripped">
+        <thead>
         <tr>
-            <td>{{ technician.nom }}</td>
-            <td>{{ technician.email }}</td>
-            <td>
-                {% if technician.status %}
-                    <p>disponible</p>
-                {% else %}
-                	<p>en intervention</p>
-                {% endif %}
-            </td>
+            <td><b>Nom</b></td>
+             <td><b>Email</b></td>
+            <td><b>Status</b></td>
         </tr>
-    {% endfor %}
-</table>
+        </thead>
+        <tbody>
+        {% for technician in technicians %}
+            <tr class="{% if technician.status %}
+            success
+        {% else %}
+            danger
+        {% endif %}" >
+                <td>{{ technician.nom }}</td>
+                <td>{{ technician.email }}</td>
+                <td>
+                    {% if technician.status %}
+                        Disponible
+                    {% else %}
+                        En Intervention
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="listDrivers" class="btn btn-primary">Voir la liste des véhicules</a>
 {% endblock %}

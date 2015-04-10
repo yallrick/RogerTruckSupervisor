@@ -4,6 +4,8 @@ namespace RogerTruckSupervisor\AppBundle\Controller;
 
 use Parse\ParseClient;
 use Parse\ParseException;
+use Parse\ParseInstallation;
+use Parse\ParsePush;
 use Parse\ParseQuery;
 use Parse\ParseUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -23,14 +25,18 @@ class BackgroundWorkerController extends Controller
         
         $foo = function(){
             $LIMITATIONMAXIMUMDELADUREEDUTEMPSDELARRET = 300;
+            $countTrucksStopped = 0;
 
             // TODO
             $query = new ParseQuery("Camion");
             $query->equalTo("status", "RUNNING");
 
-
+            
+            
+            
             try {
                 $trucks = $query->find();
+
 
                 // Pour tous les camions
                 for ($i = 0; $i < count($trucks); $i++) {
@@ -55,9 +61,10 @@ class BackgroundWorkerController extends Controller
                         }
 
                         if($sumTick >= $LIMITATIONMAXIMUMDELADUREEDUTEMPSDELARRET){
-                            // TODO : envoyer le message de "qu'es ce qui se passe"
 
-                            // retrouver la bonne installation  à partir du truck
+
+                            echo "Un camion est a l'arrêt";
+                            die;
 
                             // retrouver un chauffeur
                             $queryDriver = new ParseQuery("Camioneur");

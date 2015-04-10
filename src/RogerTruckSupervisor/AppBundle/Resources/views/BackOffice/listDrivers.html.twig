@@ -13,7 +13,11 @@
         </thead>
         <tbody>
             {% for truck in trucks %}
-                <tr>
+                <tr class="
+                {% if truck.status == "NEED_ASSISTANCE" %}danger{% endif %}
+                {% if truck.status == "RUNNING" %}success{% endif %}
+                {% if truck.status == "ASSISTANCE_CALLED" %}warning{% endif %}
+                ">
                     <td>{{ truck.immatriculation }}</td>
                     <td>{{ truck.status }}</td>
                     <td>
@@ -29,8 +33,25 @@
         </tbody>
     </table>
     <a href="listTechnicians" class="btn btn-primary">Voir la liste des techniciens</a>
+    <div style="text-align: center">
+        <p><a href="#" id="btnScan" class="btn btn-success">Lancer la surveillance</a> - <span id="statusScan"></span></p>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     
+    
+    <script>
+        $(function(){
+            $('#btnScan').click(function(){
+                $('#statusScan').html('Loading...');
+
+                var jqxhr = $.get( "checkLocations", function(data) {
+                    $('#statusScan').html(data);
+                    //alert(data);
+                })
+            });
+        });
+    </script>
 {% endblock %}

@@ -56,24 +56,25 @@ class DefaultController extends Controller
             $json = new JsonResponse();
 
             $query = new ParseQuery("Camion");
-            $camion_location = new ParseObject("Camion_location");
+            $camion_location = new ParseObject("Camion_locations");
             try {
 
-                $gameScore = $query->get($idTruck);
+                $truck = $query->get($idTruck);
 
                 $location = new ParseGeoPoint($request->get('lon') + 0, $request->get('lat') + 0);
                 $time = time();
+
                 
                 // mémorisation dans l'historique
-                $camion_location->set("camionID", $idTruck);
+                $camion_location->set("camionId", $truck);
                 $camion_location->set("location", $location);
                 $camion_location->set("lastTick", $time);
                 $camion_location->save();
 
                 // mise à jour de la table
-                $gameScore->set("location", $location);
-                $gameScore->set("lastTick", $time );
-                $gameScore->save();
+                $truck->set("location", $location);
+                $truck->set("lastTick", $time );
+                $truck->save();
                 
                 $json->setContent(json_encode(array("operation" => true)));
             } catch (ParseException $ex) {
