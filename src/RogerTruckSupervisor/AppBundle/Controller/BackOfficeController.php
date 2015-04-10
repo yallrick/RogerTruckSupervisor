@@ -45,21 +45,14 @@ class BackOfficeController extends Controller
         foreach($technicians as $technician){
             $iduser = $technician->get('userId');
 
-            //$queryUser = new ParseQuery("User");
             $queryUser = ParseUser::query();
-            //$userQuery->matchesKeyInQuery("hometown", "city", $teamQuery);
             
-            
-            
-
             $user = $queryUser->get($iduser->getObjectId());
             $username = $user->get('username');
             $email = $user->get('email');
 
             $queryIntervention = new ParseQuery("Intervention");
 
-            //$queryIntervention->equalTo("technicienId", "GQFwOCgqSn");
-            //$intervention = $queryIntervention->find();
             $queryIntervention->equalTo("technicienId", $technician);
             $interventions = $queryIntervention->descending("createdAt");
             $intervention = $interventions->first();
