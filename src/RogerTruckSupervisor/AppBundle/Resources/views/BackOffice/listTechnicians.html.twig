@@ -12,12 +12,13 @@
     </tr>    
     {% for technician in technicians %}
         <tr>
-            <td>{{ technician.username }}</td>
+            <td>{{ technician.nom }}</td>
             <td>{{ technician.email }}</td>
-            <td>{{ technician.status }}</td>
             <td>
                 {% if technician.status %}
                     <p>disponible</p>
+                {% else %}
+                	<p>en intervention</p>
                 {% endif %}
             </td>
         </tr>

@@ -43,15 +43,20 @@ class BackOfficeController extends Controller
 
         $array_technicians = array();
         foreach($technicians as $technician){
-            $queryUser = new ParseQuery("User");
+            $iduser = $technician->get('userId');
+
+            $queryUser = ParseUser::query();
             
-            $user = $queryUser->get($technician->get('userId'));
+            $user = $queryUser->get($iduser->getObjectId());
             $username = $user->get('username');
             $email = $user->get('email');
 
             $queryIntervention = new ParseQuery("Intervention");
-            $queryIntervention->equalTo("technicienId", $technician->getOjectId());
-            $intervention = $queryIntervention->find();
+
+            $queryIntervention->equalTo("technicienId", $technician);
+            $interventions = $queryIntervention->descending("createdAt");
+            $intervention = $interventions->first();
+
             $available = $intervention->get('dateEndIntervention') ? true : false;
 
             $array_technicians[] = array("nom" => $username, "email" => $email, "status" => $available);
