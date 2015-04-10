@@ -17,6 +17,7 @@
                 {% if truck.status == "NEED_ASSISTANCE" %}danger{% endif %}
                 {% if truck.status == "RUNNING" %}success{% endif %}
                 {% if truck.status == "ASSISTANCE_CALLED" %}warning{% endif %}
+                {% if truck.status == "STOPPED" %}warning{% endif %}
                 ">
                     <td>{{ truck.immatriculation }}</td>
                     <td>{{ truck.status }}</td>
@@ -34,7 +35,8 @@
     </table>
     <a href="listTechnicians" class="btn btn-primary">Voir la liste des techniciens</a>
     <div style="text-align: center">
-        <p><a href="#" id="btnScan" class="btn btn-success">Lancer la surveillance</a> - <span id="statusScan"></span></p>
+        <p><a href="#" id="btnScan" class="btn btn-success">Lancer la surveillance</a>
+            <br /><span id="statusScan"></span></p>
     </div>
 {% endblock %}
 
@@ -48,8 +50,8 @@
                 $('#statusScan').html('Loading...');
 
                 var jqxhr = $.get( "checkLocations", function(data) {
-                    $('#statusScan').html(data);
-                    //alert(data);
+                    $('#statusScan').html("Done.");
+                    window.location.href = "listDrivers";
                 })
             });
         });

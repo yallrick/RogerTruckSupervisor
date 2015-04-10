@@ -125,7 +125,7 @@ class BackOfficeController extends Controller
         };
         $truck = $this->logIntoParseFacebook($foo, array('request' => $request));
 
-        //$truck->set("status", "ASSISTANCE_CALLED");
+        $truck->set("status", "ASSISTANCE_CALLED");
         $truck->save();
         
         

@@ -44,18 +44,21 @@ class BackgroundWorkerController extends Controller
 
                     // récupérer l'historique des locations
                     $queryLocations = new ParseQuery("Camion_locations");
-                    $queryLocations->equalTo("camionID", $truck->getObjectId());
+                    $queryLocations->equalTo("camionId", $truck);
 
                     $locations = $queryLocations->find();
 
                     $previousLocation = null;
                     $sumTick = 0;
                     for ($j = 0; $j < count($locations); $j++) {
-                        $location = $locations[$i];
+                        $location = $locations[$j];
+                        $previousLocation = $j >= 1 ? $locations[$j - 1] : null;
 
-                        // TODO : comparer les GeoPoints
-                        if($previousLocation != null && $previousLocation == $previousLocation){
-                            $sumTick += $location->get('laskTick') - $previousLocation->get('laskTick');
+                        if($previousLocation != null &&
+                            round($location->get('location')->getLatitude(), 4) == round($previousLocation->get('location')->getLatitude(), 4) &&
+                            round($location->get('location')->getLongitude(), 4) == round($previousLocation->get('location')->getLongitude(), 4)
+                        ){
+                            $sumTick += $location->get('lastTick') - $previousLocation->get('lastTick');
                         }else{
                             $sumTick = 0;
                         }
@@ -63,10 +66,7 @@ class BackgroundWorkerController extends Controller
                         if($sumTick >= $LIMITATIONMAXIMUMDELADUREEDUTEMPSDELARRET){
 
 
-                            echo "Un camion est a l'arrêt";
-                            die;
-
-                            // retrouver un chauffeur
+                            /*/ retrouver un chauffeur
                             $queryDriver = new ParseQuery("Camioneur");
                             $queryDriver->equalTo("camionId", $truck->getObjectId());
                             $driver = $queryDriver->find();
@@ -79,6 +79,7 @@ class BackgroundWorkerController extends Controller
                             // retrouver l'installation
                             $queryDriver = new ParseQuery("installation");
                             $install = $queryDriver->get($user->get('installationId'));
+                            /**/
 
                             // Notification for Android users
                             $queryAndroid = ParseInstallation::query();
@@ -92,11 +93,13 @@ class BackgroundWorkerController extends Controller
                             ));
 
                             $truck->set('status', "STOPPED");
+                            $truck->save();
                             break;
                         }
 
-                        $previousLocation = $location;
                     }
+                    
+
                 }
 
 

@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe238b6-83a4-436e-b8d4-94a41d95f232" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackOfficeController.php" afterPath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackOfficeController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackgroundWorkerController.php" afterPath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackgroundWorkerController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/DefaultController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/listDrivers.html.twig" afterPath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/listDrivers.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/listTechnicians.html.twig" afterPath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/listTechnicians.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/sendTechnician.html.twig" afterPath="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/sendTechnician.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RogerTruckSupervisor.iws" />
@@ -31,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6356932" vertical-offset="725" max-vertical-offset="3383">
-              <caret line="68" column="47" selection-start-line="68" selection-start-column="47" selection-end-line="68" selection-end-column="47" />
+            <state vertical-scroll-proportion="-29.73077" vertical-offset="179" max-vertical-offset="3383">
+              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
               <folding>
                 <element signature="e#61#83#0#PHP" expanded="true" />
               </folding>
@@ -46,11 +46,21 @@
       <file leaf-file-name="BackOfficeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackOfficeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.309091" vertical-offset="478" max-vertical-offset="3383">
-              <caret line="55" column="56" selection-start-line="55" selection-start-column="56" selection-end-line="55" selection-end-column="67" />
+            <state vertical-scroll-proportion="-4.418182" vertical-offset="1933" max-vertical-offset="3383">
+              <caret line="128" column="23" selection-start-line="128" selection-start-column="23" selection-end-line="128" selection-end-column="23" />
               <folding>
                 <element signature="e#61#83#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sendTechnician.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/sendTechnician.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,16 +70,19 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-17.653847" vertical-offset="0" max-vertical-offset="714">
               <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-              <folding />
+              <folding>
+                <marker date="1428666944787" expanded="true" signature="100:1033" placeholder="{% block body ...%}" />
+                <marker date="1428666944787" expanded="true" signature="379:906" placeholder="{% for technician in technicians ...%}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="listDrivers.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="listDrivers.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/listDrivers.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.692308" vertical-offset="329" max-vertical-offset="1071">
-              <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.75397974" vertical-offset="380" max-vertical-offset="1105">
+              <caret line="53" column="55" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -100,8 +113,8 @@
       <file leaf-file-name="BackgroundWorkerController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackgroundWorkerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.1923075" vertical-offset="544" max-vertical-offset="2346">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state vertical-scroll-proportion="-21.461538" vertical-offset="1057" max-vertical-offset="2397">
+              <caret line="95" column="42" selection-start-line="95" selection-start-column="42" selection-end-line="95" selection-end-column="42" />
               <folding>
                 <element signature="e#61#83#0#PHP" expanded="true" />
               </folding>
@@ -129,16 +142,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="238">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -153,11 +156,12 @@
         <option value="$PROJECT_DIR$/vendor/autoload.php" />
         <option value="$PROJECT_DIR$/vendor/parse/php-sdk/src/Parse/ParseClient.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackOfficeController.php" />
         <option value="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/listTechnicians.html.twig" />
-        <option value="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/listDrivers.html.twig" />
-        <option value="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackgroundWorkerController.php" />
         <option value="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackOfficeController.php" />
+        <option value="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackgroundWorkerController.php" />
+        <option value="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/sendTechnician.html.twig" />
+        <option value="$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/listDrivers.html.twig" />
       </list>
     </option>
   </component>
@@ -849,7 +853,7 @@
       <workItem from="1428061567188" duration="9139000" />
       <workItem from="1428593319132" duration="6358000" />
       <workItem from="1428612491667" duration="3796000" />
-      <workItem from="1428657617709" duration="7207000" />
+      <workItem from="1428657617709" duration="10640000" />
     </task>
     <task id="LOCAL-00001" summary="installation de parse">
       <created>1427463067408</created>
@@ -953,11 +957,17 @@
       <option name="project" value="LOCAL" />
       <updated>1428658692278</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="correction d'un bug sur l'historique des positions des camions">
+      <created>1428669802450</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1428669802450</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42406000" />
+    <option name="totallyTimeSpent" value="45839000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1023,7 +1033,8 @@
     <MESSAGE value="changement du status quand on appel les secours + redirection" />
     <MESSAGE value="correction d'un oubli" />
     <MESSAGE value="correction d'un oubli, ajout du technicien dans l'intervention" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction d'un oubli, ajout du technicien dans l'intervention" />
+    <MESSAGE value="correction d'un bug sur l'historique des positions des camions" />
+    <option name="LAST_COMMIT_MESSAGE" value="correction d'un bug sur l'historique des positions des camions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1032,13 +1043,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/autoload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="323">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/autoload.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="306">
@@ -1385,36 +1389,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.653847" vertical-offset="0" max-vertical-offset="714">
           <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/listDrivers.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.692308" vertical-offset="329" max-vertical-offset="1071">
-          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackgroundWorkerController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075" vertical-offset="544" max-vertical-offset="2346">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="e#61#83#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackOfficeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.309091" vertical-offset="478" max-vertical-offset="3383">
-          <caret line="55" column="56" selection-start-line="55" selection-start-column="56" selection-end-line="55" selection-end-column="67" />
-          <folding>
-            <element signature="e#61#83#0#PHP" expanded="true" />
+            <marker date="1428666944787" expanded="true" signature="100:1033" placeholder="{% block body ...%}" />
+            <marker date="1428666944787" expanded="true" signature="379:906" placeholder="{% for technician in technicians ...%}" />
           </folding>
         </state>
       </provider>
@@ -1429,10 +1406,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6356932" vertical-offset="725" max-vertical-offset="3383">
-          <caret line="68" column="47" selection-start-line="68" selection-start-column="47" selection-end-line="68" selection-end-column="47" />
+        <state vertical-scroll-proportion="-29.73077" vertical-offset="179" max-vertical-offset="3383">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding>
             <element signature="e#61#83#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/sendTechnician.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="717">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackgroundWorkerController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.461538" vertical-offset="1057" max-vertical-offset="2397">
+          <caret line="95" column="42" selection-start-line="95" selection-start-column="42" selection-end-line="95" selection-end-column="42" />
+          <folding>
+            <element signature="e#61#83#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Controller/BackOfficeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.418182" vertical-offset="1933" max-vertical-offset="3383">
+          <caret line="128" column="23" selection-start-line="128" selection-start-column="23" selection-end-line="128" selection-end-column="23" />
+          <folding>
+            <element signature="e#61#83#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RogerTruckSupervisor/AppBundle/Resources/views/BackOffice/listDrivers.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75397974" vertical-offset="380" max-vertical-offset="1105">
+          <caret line="53" column="55" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
