@@ -7,6 +7,8 @@ use Parse\ParseException;
 use Parse\ParseObject;
 use Parse\ParseQuery;
 use Parse\ParseUser;
+use Parse\ParseInstallation;
+use Parse\ParsePush;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -22,8 +24,36 @@ class BackOfficeController extends Controller
      */
     public function listTechniciansAction()
     {
+        $foo = function(){
+            $query = new ParseQuery("Technicien");
+            try{
+                return $query->find();
+            } catch(ParseException $ex){
+                return array();
+            }
+        };
+
+        $technicians = $this->logIntoParseFacebook($foo);
+
+
+        $array_technicians = array();
+        foreach($technicians as $technician){
+            $queryUser = new ParseQuery("User");
+            
+            $user = $queryUser->get($technician->get('userId'));
+            $username = $user->get('username');
+            $email = $user->get('email');
+
+            $queryIntervention = new ParseQuery("Intervention");
+            $queryIntervention->equalTo("technicienId", $technician->getOjectId());
+            $intervention = $queryIntervention->find();
+            $available = $intervention->get('dateEndIntervention') ? true : false;
+
+            $array_technicians[] = array("nom" => $username, "email" => $email, "status" => $available);
+        } 
+
         return array(
-                // ...
+                "technicians" => $array_technicians
             );    }
 
     /**
@@ -108,6 +138,19 @@ class BackOfficeController extends Controller
                 return $intervention;
             };
             $intervention = $this->logIntoParseFacebook($foo, array('truck' => $truck));
+
+
+            // Notification for technician
+            $queryIos = ParseInstallation::query();
+            $queryIos->equalTo('deviceType', 'ios');
+
+            ParsePush::send(array(
+                "where" => $queryIos, // $install
+                "data" => array(
+                    "alert" => "Bonjour, nous avons besoin de votre aide sur un camion. #911"
+                )
+            ));
+
 
 
             return $this->redirect($this->generateUrl('listDrivers'));
