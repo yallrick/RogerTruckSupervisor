@@ -18,6 +18,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BackOfficeController extends Controller
 {
+    
+    
+    
+    private $user;
+    
     /**
      * @Route("/listTechnicians")
      * @Template()
@@ -115,7 +120,7 @@ class BackOfficeController extends Controller
         };
         $truck = $this->logIntoParseFacebook($foo, array('request' => $request));
 
-        //$truck->set("status", "ASSISTANCE_CALLED");
+        $truck->set("status", "ASSISTANCE_CALLED");
         $truck->save();
         
         
@@ -167,6 +172,7 @@ class BackOfficeController extends Controller
         ParseClient::initialize('oL1kxNThX8882iThZhowKQgGMtcX9u93fMYZzRhc', 'OPMvbyuFsR91hkftjr98w80GRpu1HuY4j9DGI7pC', '2zWN6c32DFiFrY4zch0yhLI7dHXHefluRYf8O1ZV');
         try{
             $user = ParseUser::logIn("simon", "simon");
+            $this->user = $user;
             return $whattodo($user, $options);
         }catch(ParseException $error){
 
